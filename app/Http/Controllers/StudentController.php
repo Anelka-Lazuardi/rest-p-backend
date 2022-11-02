@@ -40,10 +40,10 @@ class StudentController extends Controller
         return response()->json($data, 201);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, Student $id)
     {
 
-        $student = Student::find($request->id);
+        $student = Student::find($id);
         $student->update($request->all());
         $data = [
             "message" => 'Success update student',
@@ -52,9 +52,9 @@ class StudentController extends Controller
         return response()->json($data, 201);
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request, Student $id)
     {
-        $student = Student::find($request->id);
+        $student = Student::find($id);
         $student->delete();
         $data = [
             "message" => 'Success deleted student',
